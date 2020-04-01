@@ -1,0 +1,26 @@
+.btn {
+  flex: 1;
+  border: 0;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.25rem;
+  cursor: pointer;
+
+  &-primary {
+    color: #faf4f4;
+    background-color: #005082;
+  }
+
+  &-secondary {
+    color: #faf4f4;
+    background-color: #ffa41b;
+  }
+
+  &-ternary {
+    color: #faf4f4;
+    background-color: #fe346e;
+  }
+
+  &-companion {
+    margin-left: 0.5rem;
+  }
+}

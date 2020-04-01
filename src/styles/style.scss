@@ -1,0 +1,52 @@
+@import './components/button.scss';
+@import './components/form.scss';
+
+@import './components/pixels.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+:root {
+  box-sizing: border-box;
+
+  --font-family: 'Lato', sans-serif;
+}
+
+body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  font-family: var(--font-family);
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.fixed {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #fff;
+  padding: 2rem 0;
+}
+
+.grid {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.content {
+  padding: 1rem 0;
+}
+
+.boxes {
+  &-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    * + * {
+      margin: 0.25rem;
+    }
+  }
+}

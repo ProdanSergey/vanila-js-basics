@@ -1,0 +1,42 @@
+.form {
+  width: 100%;
+  
+  &-field + &-field {
+    margin-top: 0.5rem;
+  }
+
+  &-label {
+    display: block;
+    padding-bottom: 0.25rem;
+  }
+
+  &-controls {
+    display: flex;
+    align-items: flex-end;
+    padding: 0.5rem 0;
+
+    * + * {
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.input {
+  display: block;
+  width: 100%;
+  border: 1px solid #999999;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  font-family: var(--font-family);
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+
+  &-wrapper {
+    display: flex;
+  }
+
+  &--custom, &--textarea {
+    padding: 1rem;
+    min-height: 10rem;
+  }
+}
