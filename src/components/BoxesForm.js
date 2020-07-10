@@ -1,5 +1,5 @@
-import {Boxes} from '../models/Boxes';
-import {Form} from '../models/Form';
+import { Boxes } from '../models/Boxes';
+import { Form } from '../models/Form';
 
 class BoxesForm {
   constructor(template) {
@@ -18,7 +18,7 @@ class BoxesForm {
           type: 'custom',
           name: 'boxes_result',
           ref: this.onRef,
-        }
+        },
       ],
       handlers: [
         {
@@ -31,25 +31,25 @@ class BoxesForm {
           type: 'reset',
           callback: this.onReset,
           color: 'secondary',
-        }
+        },
       ],
       options: {
         className: 'boxes',
-      }
-    })
+      },
+    });
 
     this.form = form.create();
     this.boxes = new Boxes(this.ref);
   }
 
-  onRef = node => {
+  onRef = (node) => {
     node.classList.add('boxes-wrapper');
     this.ref = node;
   };
 
-  onSubmit = ({elements: {boxes_value}}) => {
-    this.boxes.createBoxes(boxes_value.valueAsNumber);
-  } 
+  onSubmit = ({ elements: { boxes_value: boxesValue } }) => {
+    this.boxes.createBoxes(boxesValue.valueAsNumber);
+  };
 
   onReset = () => this.boxes.destroy();
 

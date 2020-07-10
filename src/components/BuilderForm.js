@@ -1,5 +1,5 @@
-import {StringBuilder} from '../models/StringBuilder';
-import {Form} from '../models/Form';
+import { StringBuilder } from '../models/StringBuilder';
+import { Form } from '../models/Form';
 
 class BuilderForm {
   constructor(template) {
@@ -16,7 +16,7 @@ class BuilderForm {
           label: 'Result',
           type: 'textarea',
           name: 'string_builder_result',
-        }
+        },
       ],
       handlers: [
         {
@@ -28,27 +28,32 @@ class BuilderForm {
           event: 'reset',
           type: 'reset',
           color: 'secondary',
-        }
+        },
       ],
       options: {
         className: 'strings',
-      }
-    })
+      },
+    });
 
     this.form = form.create();
   }
 
-  onSubmit = form => {
-    const {elements: {string_builder_value, string_builder_result}} = form;
-    
-    const builder = new StringBuilder(string_builder_value.value);
+  onSubmit = (form) => {
+    const {
+      elements: {
+        string_builder_value: stringBuilderValue,
+        string_builder_result: stringBuilderResult,
+      },
+    } = form;
 
-    string_builder_result.value = builder
+    const builder = new StringBuilder(stringBuilderValue.value);
+
+    stringBuilderResult.value = builder
       .append('^')
       .prepend('^')
       .pad('=')
       .toString();
-  }
+  };
 
   render() {
     this.template.append(this.form);

@@ -1,5 +1,5 @@
-import {Pixels} from '../models/Pixels';
-import {Form} from '../models/Form';
+import { Pixels } from '../models/Pixels';
+import { Form } from '../models/Form';
 
 class PixelsForm {
   constructor(template) {
@@ -16,28 +16,30 @@ class PixelsForm {
           handler: {
             type: 'submit',
             label: 'Search',
-          }
+          },
         },
         {
           label: 'Result',
           type: 'custom',
           name: 'search_result',
-          ref: node => this.ref = node,
-        }
+          ref: (node) => {
+            this.ref = node;
+          },
+        },
       ],
       options: {
         className: 'pixels',
         onSubmit: this.onSubmit,
-      }
-    })
+      },
+    });
 
     this.form = form.create();
     this.pixels = new Pixels(this.ref);
   }
 
-  onSubmit = ({elements: {search_value}}) => {
-    this.pixels.load(search_value.value);
-  }
+  onSubmit = ({ elements: { search_value: searchValue } }) => {
+    this.pixels.load(searchValue.value);
+  };
 
   render() {
     this.template.append(this.form);

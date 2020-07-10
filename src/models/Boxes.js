@@ -1,48 +1,47 @@
-import {range, getRandomHex} from '../helpers';
+import { range } from '../helpers/functions';
+import { getRandomHex, elementFactory, getInvertedHex } from '../helpers';
 
-const INITIAL_VALUE = 3;
+const INITIAL_VALUE = 4;
 const STEP = 10;
+const MAX_BOXES = 20;
 
 class Boxes {
   constructor(container) {
     if (!container) throw new Error('There is no container provided');
 
     this.container = container;
-  } 
+  }
 
   createBoxes(amount) {
+    if (amount > MAX_BOXES) throw new Error(`Max limit is ${MAX_BOXES} boxes`);
+
     const clone = this.container.cloneNode();
-    const nodes = range(amount, INITIAL_VALUE, STEP).map(index => this.createBox(index));
-    
-    nodes.forEach(node => clone.append(node));
+
+    const boxes = range(amount, INITIAL_VALUE, STEP).map((index) =>
+      this.createBox(index),
+    );
+
+    boxes.forEach((box) => clone.append(box));
 
     this.render(clone);
   }
 
-  createBox(index) {    
-    const node = document.createElement('div');
+  createBox(index) {
+    const hex = getRandomHex();
 
-    node.classList.add('box');
-    
-    this.setDimensions(node, index);
-    this.setBackground(node);
-    this.setLabel(node, index);
-
-    return node;
-  }
-
-  setDimensions(node, index) {
-    ['height', 'width'].forEach(prop => node.style[prop] = `${index}px`);
-  }
-
-  setBackground(node) {
-    node.style.backgroundColor = getRandomHex();
-  }
-
-  setLabel(node, index) {
-    node.style.fontSize = `${index / INITIAL_VALUE}px`;
-
-    node.innerText = `${index}px`;
+    return elementFactory('div', {
+      attrs: {
+        className: 'box',
+        innerText: `${index}px`,
+      },
+      styles: {
+        backgroundColor: hex,
+        color: getInvertedHex(hex),
+        fontSize: `${index / INITIAL_VALUE}px`,
+        width: `${index}px`,
+        height: `${index}px`,
+      },
+    });
   }
 
   destroy() {

@@ -1,20 +1,26 @@
 {
-  "name": "webpack-4-boilerplate",
+  "name": "js-es2015-demo",
   "version": "1.0.0",
-  "description": "Boilerplate for modern javascript development using webpack 4",
-  "author": "Fin Mavis",
+  "description": "Basic JS ES2015 Demo",
+  "author": "Serhii Prodan",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.7.7",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.0.6",
     "brotli-webpack-plugin": "^1.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "compression-webpack-plugin": "^3.0.1",
     "css-loader": "^3.4.1",
     "cssnano": "^4.1.0",
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "file-loader": "^5.0.2",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
@@ -23,6 +29,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.0.5",
     "purgecss-webpack-plugin": "^1.6.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.1.2",
@@ -33,12 +40,14 @@
   },
   "scripts": {
     "start": "webpack-dev-server --open --config=config/webpack.dev.js",
-    "build": "webpack --config=config/webpack.prod.js"
+    "build": "webpack --config=config/webpack.prod.js",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
     "basiclightbox": "^5.0.3",
     "core-js": "3",
+    "invert-color": "^2.0.0",
     "on-change": "^2.0.1"
   },
   "browserslist": [

@@ -1,6 +1,7 @@
 @import './components/button.scss';
 @import './components/form.scss';
 
+@import './components/box';
 @import './components/pixels.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
@@ -18,7 +19,9 @@ body {
   font-family: var(--font-family);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -44,9 +47,5 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-
-    * + * {
-      margin: 0.25rem;
-    }
   }
 }
