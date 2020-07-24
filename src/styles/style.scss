@@ -1,6 +1,8 @@
 @import './components/button.scss';
 @import './components/form.scss';
 
+@import './components/layout';
+
 @import './components/box';
 @import './components/pixels.scss';
 
@@ -13,9 +15,7 @@
 }
 
 body {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
+  margin: 0;
   font-family: var(--font-family);
 }
 
@@ -23,6 +23,12 @@ body {
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
 }
 
 .fixed {
@@ -36,16 +42,4 @@ body {
 .grid {
   max-width: 600px;
   margin: 0 auto;
-}
-
-.content {
-  padding: 1rem 0;
-}
-
-.boxes {
-  &-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
 }

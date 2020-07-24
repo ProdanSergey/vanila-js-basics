@@ -2,11 +2,10 @@ import { Pixels } from '../models/Pixels';
 import { Form } from '../models/Form';
 
 class PixelsForm {
-  constructor(template) {
-    this.template = template;
+  constructor() {
     this.ref = null;
 
-    const form = new Form({
+    this.form = new Form({
       fields: [
         {
           label: 'Search',
@@ -31,9 +30,8 @@ class PixelsForm {
         className: 'pixels',
         onSubmit: this.onSubmit,
       },
-    });
+    }).create();
 
-    this.form = form.create();
     this.pixels = new Pixels(this.ref);
   }
 
@@ -42,7 +40,7 @@ class PixelsForm {
   };
 
   render() {
-    this.template.append(this.form);
+    return this.form;
   }
 }
 

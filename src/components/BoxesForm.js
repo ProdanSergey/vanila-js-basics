@@ -2,11 +2,10 @@ import { Boxes } from '../models/Boxes';
 import { Form } from '../models/Form';
 
 class BoxesForm {
-  constructor(template) {
-    this.template = template;
+  constructor() {
     this.ref = null;
 
-    const form = new Form({
+    this.form = new Form({
       fields: [
         {
           label: 'Value',
@@ -36,9 +35,8 @@ class BoxesForm {
       options: {
         className: 'boxes',
       },
-    });
+    }).create();
 
-    this.form = form.create();
     this.boxes = new Boxes(this.ref);
   }
 
@@ -54,7 +52,7 @@ class BoxesForm {
   onReset = () => this.boxes.destroy();
 
   render() {
-    this.template.append(this.form);
+    return this.form;
   }
 }
 

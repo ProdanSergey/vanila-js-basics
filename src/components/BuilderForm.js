@@ -2,10 +2,8 @@ import { StringBuilder } from '../models/StringBuilder';
 import { Form } from '../models/Form';
 
 class BuilderForm {
-  constructor(template) {
-    this.template = template;
-
-    const form = new Form({
+  constructor() {
+    this.form = new Form({
       fields: [
         {
           label: 'Value',
@@ -33,9 +31,7 @@ class BuilderForm {
       options: {
         className: 'strings',
       },
-    });
-
-    this.form = form.create();
+    }).create();
   }
 
   onSubmit = (form) => {
@@ -56,7 +52,7 @@ class BuilderForm {
   };
 
   render() {
-    this.template.append(this.form);
+    return this.form;
   }
 }
 

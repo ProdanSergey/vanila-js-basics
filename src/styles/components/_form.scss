@@ -40,4 +40,8 @@
     padding: 1rem;
     min-height: 10rem;
   }
+
+  &--textarea {
+    resize: none;
+  }
 }

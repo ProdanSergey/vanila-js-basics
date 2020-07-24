@@ -63,3 +63,6 @@ export const safeSet = (entity, path, value) => {
     target = target[key];
   });
 };
+
+export const compose = (...fns) => (arg) =>
+  fns.reduce((acc, fn) => fn(acc), arg);
