@@ -15,7 +15,8 @@ module.exports = {
     contentBase: path.join(__dirname, "../build"),
     compress: true,
     port: 3000,
-    overlay: true
+    overlay: true,
+    historyApiFallback: true,
   },
   devtool: "cheap-module-eval-source-map",
   module: {
