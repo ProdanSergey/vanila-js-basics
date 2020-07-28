@@ -49,7 +49,7 @@ export const getFragment = () => document.createDocumentFragment();
 
 export const appendChildren = (...[parent = getFragment(), ...children]) => {
   children.flat().forEach((node) => {
-    parent.append(node);
+    node && parent.append(node);
   });
 
   return parent;
