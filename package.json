@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Basic JS ES2015 Demo",
   "author": "Serhii Prodan",
+  "homepage": "https://prodansergey.github.io/vanila-js-basics/",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.7.7",
@@ -22,6 +23,7 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
     "file-loader": "^5.0.2",
+    "gh-pages": "^3.1.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.9.0",
@@ -41,7 +43,9 @@
   "scripts": {
     "start": "webpack-dev-server --open --config=config/webpack.dev.js",
     "build": "webpack --config=config/webpack.prod.js",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
