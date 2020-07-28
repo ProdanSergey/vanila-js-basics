@@ -1,5 +1,5 @@
 class Switch {
-  constructor({ parent, routes, history, fallback }) {
+  constructor({ parent, routes, history, fallback = null }) {
     this.parent = parent;
     this.routes = routes;
     this.fallback = fallback;
@@ -9,27 +9,32 @@ class Switch {
     history.listen(this.handleChange);
   }
 
-  handleChange = ({ location }) => {
-    this.matchRoute(location.pathname);
-  };
+  handleChange = ({ location }) => this.matchRoute(location.pathname);
 
-  matchRoute(predicate) {
-    const route = this.routes.find(({ path }) => path === predicate);
+  matchRoute(match) {
+    const route = this.routes.find(
+      ({ path }) => process.env.PUBLIC_URL + path === match,
+    );
 
     this.renderRoute(route);
   }
 
-  getComponent(match) {
-    return match?.component || this.fallback;
+  renderComponent(match) {
+    if (match) {
+      return match?.component?.render();
+    }
+
+    return this.fallback?.render();
   }
 
   renderRoute(route) {
-    const component = this.getComponent(route).render();
+    const component = this.renderComponent(route);
 
     if (this.parent.childElementCount) {
-      this.parent.replaceChild(component, this.parent.firstElementChild);
+      component &&
+        this.parent.replaceChild(component, this.parent.firstElementChild);
     } else {
-      this.parent.appendChild(component);
+      component && this.parent.appendChild(component);
     }
   }
 }

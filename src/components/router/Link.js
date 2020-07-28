@@ -3,7 +3,7 @@ import { elementFactory } from '../../helpers';
 
 class Link {
   constructor(path, state, attrs = {}) {
-    this.path = path;
+    this.path = process.env.PUBLIC_URL + path;
     this.state = state;
     this.attrs = attrs;
   }
